@@ -1,0 +1,11 @@
+---
+- hosts: webserver
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+  - name: Copy a folder to windows server 
+    ansible.windows.win_copy:
+      src: /root/SQL/deploy
+      dest: C:\
+  - name: Execute the command in remote shell
+    win_command: C:\deploy\deploy.bat
